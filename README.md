@@ -57,10 +57,12 @@ API Style	RESTful APIs
 
 🗄️ Database Setup (MySQL)
 1️⃣ Create Database
+```bash
 CREATE DATABASE smart_attendance;
 USE smart_attendance;
-
+```
 2️⃣ Users Table
+```bash
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
@@ -69,8 +71,9 @@ CREATE TABLE users (
   role ENUM('teacher','student') NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
+```
 3️⃣ Students Table
+```bash
 CREATE TABLE students (
   id INT AUTO_INCREMENT PRIMARY KEY,
   user_id INT NOT NULL,
@@ -78,15 +81,17 @@ CREATE TABLE students (
   class_name VARCHAR(50) NOT NULL,
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
-
+```
 4️⃣ Subjects Table
+```bash
 CREATE TABLE subjects (
   id INT AUTO_INCREMENT PRIMARY KEY,
   subject_name VARCHAR(100) NOT NULL,
   class_name VARCHAR(50) NOT NULL
 );
-
+```
 5️⃣ Attendance Table
+```bash
 CREATE TABLE attendance (
   id INT AUTO_INCREMENT PRIMARY KEY,
   student_id INT NOT NULL,
@@ -97,8 +102,9 @@ CREATE TABLE attendance (
   FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE CASCADE,
   UNIQUE (student_id, subject_id, date)
 );
-
+```
 6️⃣ Curriculum Topics
+```bash
 CREATE TABLE curriculum_topics (
   id INT AUTO_INCREMENT PRIMARY KEY,
   subject_id INT NOT NULL,
@@ -108,8 +114,9 @@ CREATE TABLE curriculum_topics (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE CASCADE
 );
-
+```
 7️⃣ Activities Table
+```bash
 CREATE TABLE activities (
   id INT AUTO_INCREMENT PRIMARY KEY,
   subject_id INT NOT NULL,
@@ -118,8 +125,9 @@ CREATE TABLE activities (
   date DATE NOT NULL,
   FOREIGN KEY (subject_id) REFERENCES subjects(id) ON DELETE CASCADE
 );
-
+```
 8️⃣ Student Activities Table
+```bash
 CREATE TABLE student_activities (
   id INT AUTO_INCREMENT PRIMARY KEY,
   activity_id INT NOT NULL,
@@ -131,13 +139,15 @@ CREATE TABLE student_activities (
   FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE,
   UNIQUE (activity_id, student_id)
 );
-
+```
 ⚙️ How to Run the Project
+
 1️⃣ Install Dependencies
+```bash
 npm install
 OR
 npm install express mysql2 cors dotenv bcryptjs jsonwebtoken
-
+```
 2️⃣ Configure Environment Variables
 
 Create a .env file in the root:
@@ -150,18 +160,19 @@ JWT_SECRET=supersecretkey
 PORT=3000
 
 3️⃣ Start MySQL Server
-
+```bash
 Make sure MySQL is running (via terminal).
-
+```
 4️⃣ Run Backend Server
+```bash
 node server/index.js
-
+```
 
 You should see:
-
+```bash
 MySQL Connected
 Server running on http://localhost:3000
-
+```
 5️⃣ Open in Browser
 http://localhost:3000
 
