@@ -152,17 +152,17 @@ npm install express mysql2 cors dotenv bcryptjs jsonwebtoken
 
 Create a .env file in the root:
 
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=your_mysql_password
-DB_NAME=smart_attendance
-JWT_SECRET=supersecretkey
+DB_HOST=localhost\
+DB_USER=root\
+DB_PASSWORD=your_mysql_password\
+DB_NAME=smart_attendance\
+JWT_SECRET=supersecretkey\
 PORT=3000
 
 3️⃣ Start MySQL Server
-```bash
+
 Make sure MySQL is running (via terminal).
-```
+
 4️⃣ Run Backend Server
 ```bash
 node server/index.js
