@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Dashboard - Smart Curriculum Tracker</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div>
+        <h1>📚 Student Dashboard</h1>
+        <p id="welcome-text">Welcome back!</p>
+      </div>
+      <div class="user-info">
+        <span class="user-name" id="user-name"></span>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="logout()">Logout</button>
+      </div>
+    </div>
+
+    <!-- MAIN TABS -->
+    <div class="nav-tabs">
+      <button type="button" class="nav-tab active" data-tab="attendance">My Attendance</button>
+      <button type="button" class="nav-tab" data-tab="curriculum">Curriculum Progress</button>
+      <button type="button" class="nav-tab" data-tab="activities">My Activities</button>
+    </div>
+
+    <!-- ATTENDANCE TAB -->
+    <div id="attendance-tab" class="tab-content active">
+      <div class="dashboard-grid" id="attendance-stats">
+        <div class="loading">Loading attendance data...</div>
+      </div>
+
+      <div class="card">
+        <h2>Subject-wise Attendance</h2>
+        <div id="subject-attendance-list"></div>
+      </div>
+    </div>
+
+    <!-- CURRICULUM TAB -->
+    <div id="curriculum-tab" class="tab-content">
+      <div class="card">
+        <h2>Curriculum Progress</h2>
+        <div id="curriculum-progress"></div>
+      </div>
+    </div>
+
+    <!-- ACTIVITIES TAB -->
+    <div id="activities-tab" class="tab-content">
+      <div class="card">
+        <h2>My Activities</h2>
+
+        <!-- FILTER SUB-TABS -->
+        <div class="nav-tabs activity-filters" style="border-bottom: 1px solid var(--border-color); margin-bottom: 20px;">
+          <button type="button" class="nav-tab active" data-activity-type="all">All</button>
+          <button type="button" class="nav-tab" data-activity-type="Assignment">Assignments</button>
+          <button type="button" class="nav-tab" data-activity-type="Test">Tests</button>
+          <button type="button" class="nav-tab" data-activity-type="Project">Projects</button>
+        </div>
+
+        <div id="activities-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/config.js"></script>
+  <script src="/js/student.js"></script>
+</body>
+</html>
